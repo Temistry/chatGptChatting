@@ -1,0 +1,267 @@
+2023-03-28 14:16:49.884: 	
+GPT : 
+
+Sub Example() 
+ 
+Dim myPowerpoint As Object 
+ 
+Set myPowerpoint = CreateObject("Powerpoint.Application")
+
+myPowerpoint.Visible = True
+ 
+Dim PresentationSlide As Object 
+ 
+Set PresentationSlide = myPowerpoint.Presentations.Add 
+
+Dim textbox As Object 
+ 
+Set textbox = PresentationSlide.Slides(1).Shapes.AddTextbox(msoTextOrientationHorizontal, 100, 100, 500, 50)
+
+textbox.TextFrame.TextRange.Text = "'주 품에 품으소서'" & vbCrLf & "난 내 모든 것을 드려봐" & vbCrLf & "내가 가지고 있는 온갖 것들을" & vbCrLf & "사랑하는 널 만난 걸" & vbCrLf & "미리 보내는 길로 걸어왔어" & vbCrLf & vbCrLf & "알 수 없는 길 따라 함께 걸어가자" & vbCrLf & "가끔 둘이 멈춰서 눈빛으로 통하자" & vbCrLf & "비오는 날엔 또 다시 내 손에 잡고" & vbCrLf & "난 내 좋아하는 널 다시 찾기 위해" 
+
+End Sub
+2023-03-28 14:16:49.888: 	
+
+2023-03-28 14:27:39.355: 	
+GPT : 
+
+1. 소득 배분 규제 강화
+2. 주택 보증금 우대 통합
+3. 의료비 보조 제도 개선
+4. 부동산 안정성 극대화
+5. 부동산 상승 추진
+6. 불법 임대 방지
+7. 사회 공공 주택 건설
+8. 솔루션 개발에 대한 지원
+9. 부동산 관련 법률 개정
+10. 주택 임대 관리 시스템 개선
+2023-03-28 14:27:39.358: 	
+
+2023-03-28 14:28:49.275: 	
+GPT : 
+
+Sub BreakPPT() 
+ 
+Dim SlideNum As Integer    
+Dim SlideObj As Slide     
+Dim SlideTitle As String  
+Dim Shapes As Shapes
+Dim oldName As String
+Dim fPath As String
+Dim sName As String
+Dim Shp As Shape
+
+fPath = "C:\Users\Desktop\" 
+
+On Error GoTo Error_Handler 
+ 
+ActivePresentation.Save 
+
+sName = ActivePresentation.Name 
+
+For SlideNum = 1 To ActivePresentation.Slides.Count 
+
+Set SlideObj = ActivePresentation.Slides(SlideNum) 
+
+SlideTitle = SlideObj.Shapes(1).TextFrame.TextRange.Text 
+
+ActivePresentation.SaveAs FileName:=fPath & SlideTitle & ".pptx" 
+
+For Each Shp In ActivePresentation.Slides(SlideNum).Shapes
+    If Shp.Type = msoTable Then
+        Shp.Select
+        Selection.Copy
+        ActivePresentation.Slides.Add Index:=SlideNum + 1, Layout:=ppLayoutBlank
+    End If
+Next Shp
+
+ActivePresentation.Save 
+
+ActivePresentation.Close 
+
+Next SlideNum
+
+Set SlideObj = Nothing 
+
+ActivePresentation.SaveAs FileName:=fPath & sName 
+
+MsgBox "작업이 완료되었습니다.", vbInformation 
+
+Error_Handler_Exit: 
+
+Exit Sub 
+
+Error_Handler: 
+
+MsgBox Err.Number & " " & Err.Description, vbCritical 
+
+Resume Error_Handler_Exit
+
+End Sub
+2023-03-28 14:28:49.278: 	
+
+2023-03-28 14:29:56.291: 	
+GPT :  실행했더니..
+
+Error 1004 : Method 'Range' of Object'_Global' Failed
+
+라는 에러가 발생합니다.
+
+이 에러는 Range 객체를 찾을 수 없기 때문에 발생하는 에러입니다. 먼저 코드를 확인해야 합니다. 각 라인에 대해 다음과 같은 사항들을 확인해 보세요.
+
+1. Range 객체의 이름이 정확한 지.
+
+2. Range 객체가 프로젝트에 있는 지.
+
+3. Range 객체가 참조하는 Sheet 또는 셀 혹은 액셀 파일이 존재하는 지.
+
+4. Range 객체의 인덱스가 정확한 지.
+2023-03-28 14:29:56.293: 	
+
+2023-03-28 14:31:20.516: 	
+GPT : 
+
+1. 목표 
+   - 산업과 부동산 상업활동 증진 및 가계 부채 소각을 위한 정책변화 목표 
+
+2. 도입된 정책 및 실행 방식
+   - 개별 금융기관 상환금융 관련정책 강화 
+   - 재건축 자금 지원 프로그램 추가 
+   - 주택가격 감동에 따른 임대형 주택제공권 시스템 추가 
+   - 주택값 상승에 따른 주택금 보증금 감면 방안 
+   - 도시개발과 주거환경 개선을 위한 도시학습 실현
+   - 주거용 부동산 거래의 투명성 확보를 위한 주택거래조회 시스템 개발
+   - 주택거래를 위한 단기장기금융기관 연계를 통한 주거환경 개선
+
+PPTX VBA 코드
+Sub CreateTable()
+Dim pres As Presentation
+Dim slide As Slide
+Dim table As Table
+
+Set pres = ActivePresentation
+Set slide = pres.Slides.Add(pres.Slides.Count + 1, ppLayoutText)
+
+Set table = slide.Shapes.AddTable(rows:=7, columns:=2).Table
+table.Rows(1).Cells(1).Shape.Text Frame.TextRange.Text = "목표"
+table.Rows(2).Cells(1).Shape.Text Frame.TextRange.Text = "개별 금융기관 상환금융 관련정책 강화"
+table.Rows(3).Cells(1).Shape.Text Frame.TextRange.Text = "재건축 자금 지원 프로그램 추가"
+table.Rows(4).Cells(1).Shape.Text Frame.TextRange.Text = "주택가격 감동에 따른 임대형 주택제공권 시스템 추가"
+table.Rows(5).Cells(1).Shape.Text Frame.TextRange.Text = "주택값 상승에 따른 주택
+2023-03-28 14:31:20.519: 	
+
+2023-03-28 14:33:53.733: 	
+GPT : 
+
+1. 장애인 복지사업의 기반이 되는 인프라 개발 지원
+2. 복지기관에 장애인을 위한 전문 상담/문화 행사 지원
+3. 장애인의 참여 및 이용을 높이는 친화력 개선 프로그램 개발
+4. 장애인 복지사업과 관련된 정책 관리 지원
+5. 장애인의 교육과 진로 진단 및 교육 지원
+6. 장애인 가족을 대상으로 하는 교육 지원
+7. 장애인 복지 국가 지원 방안 개발 및 지원
+8. 장애인을 위한 자원 배분 방식 등 사회보장 지원
+9. 장애인을 위한 복지 사업 참여를 위한 기술교육 지원
+10. 장애인을 위한 차별을 제거하고 국가 차별 방지 강력 보호 방침 개발
+2023-03-28 14:33:53.736: 	
+
+2023-03-28 14:35:12.880: 	
+GPT : 
+
+1. 장애인으로부터 보고받는 소리들 통해 장애인이 건강하게 생활할 수 있는 환경 조성 사업
+2. 장애인 유기동물 입양 장려 사업
+3. 장애인 농업 의뢰 사업
+4. 장애인의 자기계발과 취업을 위한 교육 사업
+5. 장애인의 사회통합을 위한 활동 장려 사업
+6. 장애인들의 불평 등 사회문제를 해결하기 위한 사업
+7. 장애인에게 적절한 의료진료를 제공하기 위한 사업
+8. 보육 및 재활용에 관한 기관과 이 관련된 기관 및 기관 사이의 협력 프로그램 추진 및 지원 사업
+2023-03-28 14:35:12.883: 	
+
+2023-03-28 14:36:20.009: 	간단한 text rpg c# 코드 만들어줘
+
+2023-03-28 14:36:32.170: 	
+GPT : 
+
+using System;
+
+namespace TextRPG
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("텍스트 RPG 게임에 오신 것을 환영합니다!");
+            Console.Write("사용할 캐릭터 이름을 입력하세요: ");
+            string name = Console.ReadLine();
+
+            // 사용자가 입력한 이름을 출력합니다.
+            Console.WriteLine("접속한 사용자: {0}", name);
+
+            // 플레이어의 시작 속성을 설정합니다.
+            int hp = 100;
+            int mp = 50;
+
+            // 플레이어의 기본 속성을 출력합니다.
+            Console.WriteLine("{0}의 HP: {1}  MP: {2}", name, hp, mp);
+
+            Console.WriteLine("게임을 시작합니다!");
+        }
+    }
+}
+2023-03-28 14:36:32.173: 	
+
+2023-03-28 14:43:14.802: 	천하제일상 거상에 관해 알아?
+
+2023-03-28 14:43:27.097: 	
+GPT : 
+
+천하제일상 거상(千下一上固城)은 중국 사회를 상징하는 의미 그리고 중국사회 상징 미학의 중심에 위치합니다. 이 거상은 중국 사회의 한 인상과 상징으로 그 개념이 "천하일상"(天下一上)하는 것이라고 보고합니다. 그것은 당시의 사회에 대한 비판과 개선 정신, 그리고 한 당시 이들이 제시했던 미래 사회 상상력을 나타낸 것입니다. 그리고 그것은 또한 중국의 미학 연구에 중요한 의미를 지닙니다.
+2023-03-28 14:43:27.100: 	
+
+2023-03-28 14:43:50.527: 	천하제일상 거상 게임 간단히 설명해줘
+
+2023-03-28 14:44:03.525: 	
+GPT : 
+
+천하제일상 거상 게임은 사용자들이 각자의 인생을 배우고, 인생에 대한 새로운 감상을 얻는 게임이다. 게임은 인생을 여러 시간대로 나누고, 각 시간대는 여러 이벤트로 구성되어 있다. 사용자들은 이벤트를 기반으로 스토리를 구성해가면서 게임을 하며 각자의 스토리를 제작하고, 자신의 인생을 유감없이 재밌게 감상하기 위함이다.
+2023-03-28 14:44:03.528: 	
+
+2023-03-28 14:44:56.401: 	ak interactive 회사 정보 설명
+
+2023-03-28 14:45:01.800: 	
+GPT : 
+
+VoxelZoom is an interactive SaaS platform specializing in content marketing, marketing automation, and analytics services. It is a cloud-based platform that can help companies to optimize their online presence, streamline their marketing campaigns, and measure the performance of their campaigns. The platform also offers AI-based content creation, analytics, and reporting, as well as integrated social media marketing. VoxelZoom is used by companies of all sizes, from small startups to large enterprises, to increase their ROI, improve efficiency, and boost sales.
+2023-03-28 14:45:01.803: 	
+
+2023-03-28 14:47:03.740: 	UI Manager 유니티 스크립트 작성해주세요. 모든 오브젝트는 유니티 인스펙터 창에서 동적으로 증가시킬 수 있으며 serializefield로 관리합니다.
+
+2023-03-28 14:47:10.637: 	
+GPT : 
+
+using UnityEngine;
+using System.Collections;
+
+public class UIManager : MonoBehaviour
+{
+    // The game objects that can be added/removed in the inspector
+    [SerializeField] private GameObject[] uiObjects;
+
+    void Awake()
+    {
+        // Iterate through the array of game objects and activate/deactivate each one
+        for (int i = 0; i < uiObjects.Length; i++)
+        {
+            uiObjects[i].SetActive(true);
+        }
+    }
+
+    // Method for adding/removing game objects in the inspector
+    public void ToggleObjects(int index)
+    {
+        uiObjects[index].SetActive(!uiObjects[index].activeInHierarchy);
+    }
+}
+2023-03-28 14:47:10.640: 	
+
