@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qS9yMsRba3RhdBnxZ6GLAaE9lSHP3iGhe1wJGkz8ydsyhm+lYuqNvNs5xj5JWZZHopDos/KYwGnYheOjiFMX/Q==",
+  "dgSpecHash": "Uldu/TBj+IvHVk7/aDlLJuuGr+6d2f8SPycpQfJxKoP9V14IuKbwU9RIxxMQ4DPpxU5eK8dmZaZm8QJUqINYng==",
   "success": true,
-  "projectFilePath": "C:\\data\\gptTest\\gptTest\\gptTest.csproj",
+  "projectFilePath": "C:\\data\\gptTest\\chatGptChatting\\gptTest\\gptTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\betalgo.openai.gpt3\\6.8.1\\betalgo.openai.gpt3.6.8.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

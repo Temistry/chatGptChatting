@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\data\\gptTest\\gptTest\\gptTest.csproj": {}
+    "C:\\data\\gptTest\\chatGptChatting\\gptTest\\gptTest.csproj": {}
   },
   "projects": {
-    "C:\\data\\gptTest\\gptTest\\gptTest.csproj": {
+    "C:\\data\\gptTest\\chatGptChatting\\gptTest\\gptTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\data\\gptTest\\gptTest\\gptTest.csproj",
+        "projectUniqueName": "C:\\data\\gptTest\\chatGptChatting\\gptTest\\gptTest.csproj",
         "projectName": "gptTest",
-        "projectPath": "C:\\data\\gptTest\\gptTest\\gptTest.csproj",
+        "projectPath": "C:\\data\\gptTest\\chatGptChatting\\gptTest\\gptTest.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\data\\gptTest\\gptTest\\obj\\",
+        "outputPath": "C:\\data\\gptTest\\chatGptChatting\\gptTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

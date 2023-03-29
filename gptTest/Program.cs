@@ -26,6 +26,10 @@ namespace WinFormsChatGPT
             RequestGPT();
         }
 
+        // chatGpt.Completions.CreateCompletion(new CompletionCreateRequest() request and wait function
+
+
+
         async Task RequestGPT()
         {
             var chatGpt = new OpenAIService(new OpenAiOptions()
@@ -154,6 +158,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         {
             gptInterface form = new gptInterface();
             while (true) { form.Update(); };
+            
         }
     }
 }
