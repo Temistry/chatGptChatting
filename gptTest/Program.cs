@@ -18,7 +18,7 @@ namespace WinFormsChatGPT
 
         public gptInterface()
         {
-            apiKey = "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";
+            apiKey = ""; // key 넣기;
         }
 
         public void Update()
@@ -48,7 +48,7 @@ namespace WinFormsChatGPT
                 Prompt = prompote,
                 Model = Models.TextDavinciV3, //모델명
                 Temperature = 0.9F,      //대답의 자유도(다양성 - Diversity)). 자유도가 낮으면 같은 대답, 높으면 좀 아무말?
-                MaxTokens = 1000,      //이게 길수록 글자가 많아짐. 짧은 답장은 상관없으나 이게 100,200으로 짧으면 말을 짤라버림 (시간제약이 있거나 썸네일식으로 확인만 할때는 낮추면 좋을 듯. 추가로 토큰은 1개 단어라고 생각하면 편한데, 정확하게 1개 단어는 아닌 (1개 단어가 될수도 있고 긴단어는 2개 단어가 될수 있음. GPT 검색의 단위가된다고 함. 이 토큰 단위를 기준으로 트래픽이 매겨지고, (유료인경우) 과금 책정이 됨)
+                MaxTokens = 3000,      //이게 길수록 글자가 많아짐. 짧은 답장은 상관없으나 이게 100,200으로 짧으면 말을 짤라버림 (시간제약이 있거나 썸네일식으로 확인만 할때는 낮추면 좋을 듯. 추가로 토큰은 1개 단어라고 생각하면 편한데, 정확하게 1개 단어는 아닌 (1개 단어가 될수도 있고 긴단어는 2개 단어가 될수 있음. GPT 검색의 단위가된다고 함. 이 토큰 단위를 기준으로 트래픽이 매겨지고, (유료인경우) 과금 책정이 됨)
                 N = 1   //경우의 수(대답의 수). N=3으로 하면 3번 다른 회신을 배열에 담아줌
             });
 

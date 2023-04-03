@@ -1,0 +1,318 @@
+2023-03-29 15:11:41.307: 	화씨 69도는 섭씨로 몇입니까?
+
+2023-03-29 15:11:43.577: 	
+GPT : 
+
+20.6도입니다.
+2023-03-29 15:11:43.579: 	
+
+2023-03-29 15:11:57.246: 	시리보다 당신이 더 똑똑합니까?
+
+2023-03-29 15:12:00.349: 	
+GPT : 
+
+아니요, 시리보다 나는 더 똑똑하지 않습니다.
+2023-03-29 15:12:00.351: 	
+
+2023-03-29 15:12:07.912: 	왜 그렇습니까?
+
+2023-03-29 15:12:20.808: 	
+GPT : 
+
+리액트는 자바스크립트 라이브러리이며, 뷰 및 화면 요소를 생성하고, 데이터와 함께 사용하기 위해 데이터를 바인딩하고, 반응형 웹 애플리케이션 개발에 사용할 수 있는 기능을 제공합니다. 리액트는 응답 성능이 좋고, 사용하기 쉬우며, 높은 품질의 앱 사이트를 빠르게 개발할 수 있는 적합한 도구입니다.
+2023-03-29 15:12:20.810: 	
+
+2023-03-29 15:13:07.148: 	1:n 관계의 채팅서버의 클라이언트, 서버 코드를 c#으로 작성해주십시오. 프레임워크는 winform을 사용합니다.
+
+2023-03-29 15:13:39.128: 	
+GPT : 
+
+[Client Code]
+ using System;
+ using System.Net;
+ using System.Net.Sockets;
+ using System.Threading;
+ using System.Text;
+ using System.Windows.Forms;
+ 
+ namespace ChatClient
+ {
+     public partial class ClientForm : Form
+     {
+         // Client socket
+         private Socket clientSocket;
+ 
+         // Client info
+         private string clientName;
+ 
+         // Input message
+         private string inputMessage;
+ 
+         public ClientForm()
+         {
+             InitializeComponent();
+         }
+ 
+         private void ClientForm_Load(object sender, EventArgs e)
+         {
+             // Connect to server
+             ConnectToServer();
+         }
+ 
+         private void ConnectToServer()
+         {
+             // IP address of the server
+             IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 11000);
+ 
+             // Create socket 
+             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+ 
+             try
+             {
+                 // Connect to server
+                 clientSocket.Connect(ipEndPoint);
+ 
+                 // Get client name
+                 clientName = txtName.Text;
+ 
+                 // Create thread for receiving messages
+                 Thread receiveThread = new Thread(new ThreadStart(ReceiveMessages));
+ 
+                 // Start thread
+                 receiveThread.Start();
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message, "Chat Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }
+ 
+         // Receive messages
+         private void ReceiveMessages()
+         {
+             try
+             {
+                 // Create byte array for receiving data
+                 byte[] buffer = new byte[1024];
+ 
+                 while (true)
+                 {
+                     // Receive data from server
+                     int iRx = clientSocket.Receive(buffer);
+ 
+                     // Deserialize data
+                     inputMessage = Encoding.ASCII.GetString(buffer, 0, iRx);
+ 
+                     // Invoke method for adding message to textBox
+                     this.Invoke(new MethodInvoker(DisplayMessages));
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message, "Chat Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }
+ 
+         // Display messages
+         private void DisplayMessages()
+         {
+             // Add message to textBox
+             txtChat.Text += inputMessage + Environment.NewLine;
+         }
+ 
+         private void btnSend_Click(object sender, EventArgs e)
+         {
+             // Create message
+             string message = clientName + ": " + txtMessage.Text;
+ 
+             // Serialize message
+             byte[] buffer = Encoding.ASCII.GetBytes(message);
+ 
+             // Send message to server
+             clientSocket.Send(buffer);
+ 
+             // Clear textBox
+             txtMessage.Clear();
+         }
+     }
+ }
+
+[Server Code]
+ using System;
+ using System.Net;
+ using System.Net.Sockets;
+ using System.Text;
+ 
+ namespace ChatServer
+ {
+     class Program
+     {
+         // Server socket
+         private static Socket serverSocket;
+ 
+         // Clients list
+         private static List<Socket> clientsList = new List<Socket>();
+ 
+         static void Main(string[] args)
+         {
+             // Establish the local endpoint
+             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+             IPAddress ipAddress = ipHostInfo.AddressList[0];
+             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+ 
+             // Create a TCP/IP socket
+             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+ 
+             // Bind the socket to the local endpoint and listen for incoming connections
+             serverSocket.Bind(localEndPoint);
+             serverSocket.Listen(10);
+ 
+             // Start listening for connections
+             Console.WriteLine("Waiting for a connection...");
+             serverSocket.BeginAccept(
+2023-03-29 15:13:39.131: 	
+
+2023-03-29 15:14:50.357: 	1:n 관계의 채팅서버의 클라이언트, 서버 코드를 c#으로 작성해주십시오. 프레임워크는 winform을 사용합니다.
+
+2023-03-29 15:15:08.269: 	1:n 관계의 채팅서버의 클라이언트, 서버 코드를 c#으로 작성해주십시오. 프레임워크는 winform을 사용합니다.
+
+2023-03-29 15:15:24.140: 	1:n 관계의 채팅서버의 클라이언트, 서버 코드를 c#으로 작성해주십시오. 프레임워크는 winform을 사용합니다.
+
+2023-03-29 15:16:39.040: 	1:n 관계의 채팅서버의 클라이언트, 서버 코드를 c#으로 작성해주십시오. 프레임워크는 winform을 사용합니다.
+
+2023-03-29 15:17:05.731: 	
+GPT : 
+
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+
+namespace ChatServer
+{
+    public partial class Form1 : Form
+    {
+        TcpListener serversocket;
+        Socket clientsocket;
+        Thread serverThread;
+        string dataRecieved;
+
+        public Form1()
+        {
+            InitializeComponent();
+            TextBox.CheckForIllegalCrossThreadCalls = false; 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            serverThread = new Thread(new ThreadStart(Listening));
+            serverThread.Start();
+        }
+
+        private void Listening()
+        {
+            try
+            {
+                // 포트 열고 IP Address는 로컬 호스트로 지정해 놓는다. 
+                serversocket = new TcpListener(IPAddress.Parse("127.0.0.1"), 8001); 
+                clientsocket = default(Socket);
+                serversocket.Start();
+                while (true)
+                {
+                    try
+                    {
+                        clientsocket = serversocket.AcceptSocket(); 
+                        print("Connected");
+                        byte[] bytesfrom = new byte[100];
+                        clientsocket.Receive(bytesfrom);
+                        dataRecieved = Encoding.ASCII.GetString(bytesfrom);
+                        dataRecieved = dataRecieved.Substring(0, dataRecieved.IndexOf("$"));
+                        print(">> " + dataRecieved);
+                    }
+                    catch (Exception ex)
+                    {
+                        print(ex.ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                print(ex.ToString());
+            }
+        }
+
+        private void print(string msg)
+        {
+            RichTextBox.AppendText(msg + "\n");
+        }
+    }
+}
+
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+
+namespace ChatClient
+{
+    public partial class Form1 : Form
+    {
+        TcpClient clientsocket;
+        Thread clientThread;
+        Socket serverSocket;
+        string dataRecieved;
+
+        public Form1()
+        {
+            InitializeComponent();
+            TextBox.CheckForIllegalCrossThreadCalls = false;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)  
+        {
+            clientThread = new Thread(new ThreadStart(Connecting));
+            clientThread.Start();
+        }
+
+        private void Connecting()
+        {
+            try
+            {
+                clientsocket = new TcpClient(); 
+                IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
+                clientsocket.Connect(ipAddress, 8001); 
+                print("Connected");
+            }
+            catch (Exception ex)
+            {
+                print(ex.ToString());
+            }
+        }
+
+        private void Send_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                NetworkStream serverStream = clientsocket.GetStream();
+                byte[] outStream = Encoding.ASCII.GetBytes(InputBox.Text + "$"); 
+                serverStream.Write(outStream, 0, outStream.Length);
+                serverStream.Flush();
+            }
+            catch (Exception ex)
+            {
+                print(ex.ToString());
+            }
+        }
+
+        private void print(string msg)
+        {
+            RichTextBox.AppendText(msg + "\n");
+        }
+    }
+}
+2023-03-29 15:17:05.734: 	
+
